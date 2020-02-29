@@ -59,11 +59,12 @@ app.get("/searchAuthor1/:authorName", (req, res) => {
 app.get("/searchBooks/:authorId", (req, res) => {
   let authorId = req.params.authorId;
   gr.getBooksByAuthor(authorId).then(response => {
-    if (Array.isArray(response.books.book)) {
-      res.send(response.books.book);
-    } else {
-      res.send([response.books.book]);
-    }
+    // if (Array.isArray(response.books.book)) {
+    res.send(response.books);
+    // } else {
+    //response.books.book
+    //   res.send([response.books]);
+    // }
   });
 });
 
