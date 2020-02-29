@@ -10,51 +10,55 @@ function Author() {
     setAuthor(e.target.value);
   };
   const handleClick = () => {
-    axios.get("http://localhost:3010/searchAuthor/" + author).then(res => {
-      setAuthors([res.data.author]);
-    });
+    axios
+      .get("http://localhost:3010/searchAuthor/" + author, {
+        headers: { "Content-Type": "application/json" }
+      })
+      .then(res => {
+        setAuthors([res.data.author]);
+      });
   };
-  console.log("********************************");
-  console.log(authors);
+
   return (
     <>
-      <h2>Please input the author</h2>
-      <form className="form-inline md-form mr-auto mb-4">
-        <input
-          className="form-control mr-sm-2"
-          type="text"
-          placeholder="Search author"
-          name="author"
-          value={author || ""}
-          onChange={handleChange}
-          aria-label="Search"
-        />
-        <input
-          type="button"
-          className="btn btn-info"
-          onClick={handleClick}
-          value="Search"
-        />
-      </form>
-      <table className="table table-striped" style={{ marginTop: 20 }}>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Books</th>
-          </tr>
-        </thead>
-        <tbody>
-          {authors.map((au, i) => {
-            return (
-              <tr key={i}>
-                <td>{au.name}</td>
-                <td>
-                  <Link to={"/books/" + au.id}>Edit</Link>
-                </td>
-              </tr>
-            );
-          })}
-          {/* {authors !== undefined ? (
+      <div className="container">
+        <h2>Please input the author</h2>
+        <form className="form-inline md-form mr-auto mb-4">
+          <input
+            className="form-control mr-sm-2"
+            type="text"
+            placeholder="Search author"
+            name="author"
+            value={author || ""}
+            onChange={handleChange}
+            aria-label="Search"
+          />
+          <input
+            type="button"
+            className="btn btn-info"
+            onClick={handleClick}
+            value="Search"
+          />
+        </form>
+        <table className="table table-striped" style={{ marginTop: 20 }}>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Books</th>
+            </tr>
+          </thead>
+          <tbody>
+            {authors.map((au, i) => {
+              return (
+                <tr key={i}>
+                  <td>{au.name}</td>
+                  <td>
+                    <Link to={"/books/" + au.id}>Edit</Link>
+                  </td>
+                </tr>
+              );
+            })}
+            {/* {authors !== undefined ? (
             <>
               <tr>
                 <td>{authors.name}</td>
@@ -64,9 +68,10 @@ function Author() {
               </tr>
             </>
           ) : null} */}
-        </tbody>
-      </table>
-      {/* <h3>{authors}</h3> */}
+          </tbody>
+        </table>
+        {/* <h3>{authors}</h3> */}
+      </div>
     </>
   );
 }
