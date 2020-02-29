@@ -24,6 +24,7 @@ const Books = props => {
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = books.slice(indexOfFirstPost, indexOfLastPost);
+  const newww = books.slice(indexOfFirstPost, indexOfLastPost);
   console.log("currentPage: " + currentPage);
   return (
     <>
