@@ -11,7 +11,7 @@ function Author() {
   };
   const handleClick = () => {
     axios
-      .get("http://localhost:3010/searchAuthor/" + author, {
+      .get("searchAuthor/" + author, {
         headers: { "Content-Type": "application/json" }
       })
       .then(res => {
@@ -53,7 +53,7 @@ function Author() {
                 <tr key={i}>
                   <td>{au.name}</td>
                   <td>
-                    <Link to={"/books/" + au.id}>Edit</Link>
+                    <Link to={"/books/" + au.id}>View Books</Link>
                   </td>
                 </tr>
               );

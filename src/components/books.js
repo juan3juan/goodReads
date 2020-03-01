@@ -10,7 +10,7 @@ const Books = props => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3010/searchBooks/" + props.match.params.authorId, {
+      .get("searchBooks/" + props.match.params.authorId, {
         headers: { "Content-Type": "application/json" }
       })
       .then(res => {
@@ -33,7 +33,7 @@ const Books = props => {
       <div className="container">
         <div className="col-12">
           <h2 style={{ textAlign: "center", padding: "20px 0 10px 0" }}>
-            Books of {authorName}
+            Books of {authorName === undefined ? <>..........</> : authorName}
           </h2>
           <table className="table table-striped" id="table-books">
             <thead>
