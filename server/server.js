@@ -56,18 +56,35 @@ app.get("/searchAuthor1/:authorName", (req, res) => {
   });
 });
 
-app.get("/books/searchBooks/:authorId", (req, res) => {
+app.get("/books/searchBooks/:authorId", async(req, res) => {
   let authorId = req.params.authorId;
   gr.getBooksByAuthor(authorId).then(response => {
-    // if (Array.isArray(response.books.book)) {
-    // console.log("response");
-    // console.log(response);
     res.send(response);
-    // } else {
-    //response.books.book
-    //   res.send([response.books]);
-    // }
   });
+});
+
+app.get("/books/searchBooksAll/:authorId", async(req, res) => {
+  let authorId = req.params.authorId;
+  let pages = 1;
+  let authorName = "";
+  let books = [];
+  let bookResp = {};
+  let response = await gr.getBooksByAuthor(authorId);
+  if(response !== undefined){
+    pages = response.books.total/30;
+    authorName = response.name;
+    if(response.books.total%30 !==0)
+      pages = pages+1;
+    for(let page=1; page<=pages; page++){
+      let respInner = await gr.getBooksByAuthor(authorId, page);
+      books = books.concat(respInner.books.book);
+    }
+  }
+  bookResp.books = books;
+  bookResp.authorName = authorName;
+  console.log("response");
+  console.log(bookResp.books.length);
+  res.send(bookResp);
 });
 
 app.listen(port, () => {
