@@ -19,13 +19,14 @@ function Author() {
         setAuthors([res.data.author]);
       });
   };
-
+  console.log("~~~~~~~~~~~~~~~~~~authors");
+  console.log(authors.length);
   return (
     <>
       <div className="view" id="backgroundsource">
         <div className="mask rgba-gradient align-items-center">
           <div className="container" id="data">
-            <h2>Please input the author</h2>
+            {/* <h2>Please input the author</h2> */}
             <form className="form-inline md-form mr-auto mb-4" id="searchArea">
               <input
                 className="form-control mr-sm-2"
@@ -45,26 +46,28 @@ function Author() {
                 value="Search"
               />
             </form>
-            <table className="table table-striped" style={{ marginTop: 20 }}>
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Books</th>
-                </tr>
-              </thead>
-              <tbody>
-                {authors.map((au, i) => {
-                  return (
-                    <tr key={i}>
-                      <td>{au.name}</td>
-                      <td>
-                        <Link to={"/books/" + au.id}>View Books</Link>
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
+            {authors.length === 0 ? null : (
+              <table className="table table-striped" style={{ marginTop: 20 }}>
+                <thead>
+                  <tr>
+                    <th>Author Name</th>
+                    <th>Book List Link</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {authors.map((au, i) => {
+                    return (
+                      <tr key={i}>
+                        <td>{au.name}</td>
+                        <td>
+                          <Link to={"/books/" + au.id}>View Books</Link>
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            )}
           </div>
         </div>
       </div>
@@ -85,8 +88,10 @@ function Author() {
             background-size: cover;
           }
           #searchArea {
-            padding: 10px;
-            background-color: #ffefd5;
+           // padding: 10px;
+           // background-color: #ffefd5;
+           padding-top:100px;
+
           }
           #authorSearch {
             width: 80%;

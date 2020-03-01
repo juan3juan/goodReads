@@ -74,7 +74,7 @@ const Books = props => {
                           </td>
                           <td>
                             <div
-                              id="desc"
+                              className="desc"
                               dangerouslySetInnerHTML={{
                                 __html: book.description
                               }}
@@ -113,7 +113,7 @@ const Books = props => {
             height: 150px;
             width: 30px;
           }
-          #desc {
+          .desc {
             max-height: 100%;
             overflow: auto;
           }
