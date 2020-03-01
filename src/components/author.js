@@ -21,12 +21,10 @@ function Author() {
         });
     }
   };
-  console.log("~~~~~~~~~~~~~~~~~~authors");
-  console.log(authors);
+
   return (
     <>
-      <div className="view" id="backgroundsource">
-        <div className="mask rgba-gradient align-items-center">
+      <div id="backgroundsource">
           <div className="container" id="data">
             {/* <h2>Please input the author</h2> */}
             <form className="form-inline md-form mr-auto mb-4" id="searchArea">
@@ -73,7 +71,6 @@ function Author() {
               </table>
             )}
           </div>
-        </div>
       </div>
       <style jsx>
         {`
@@ -97,8 +94,6 @@ function Author() {
             background-size: cover;
           }
           #searchArea {
-           // padding: 10px;
-           // background-color: #ffefd5;
            padding-top:100px;
 
           }
@@ -112,35 +107,7 @@ function Author() {
             color: #47A5C1;
           }
 
-          // .rgba-gradient {
-          //   height: 100vh;
-          //   background: -moz-linear-gradient(
-          //     45deg,
-          //     rgba(42, 27, 161, 0.7),
-          //     rgba(29, 210, 177, 0.7) 100%
-          //   );
-          //   background: -webkit-linear-gradient(
-          //     45deg,
-          //     rgba(42, 27, 161, 0.7),
-          //     rgba(29, 210, 177, 0.7) 100%
-          //   );
-          //   background: -webkit-gradient(
-          //     linear,
-          //     45deg,
-          //     from(rgba(42, 27, 161, 0.7)),
-          //     to(rgba(29, 210, 177, 0.7))
-          //   );
-          //   background: -o-linear-gradient(
-          //     45deg,
-          //     rgba(42, 27, 161, 0.7),
-          //     rgba(29, 210, 177, 0.7) 100%
-          //   );
-          //   background: linear-gradient(
-          //     to 45deg,
-          //     rgba(42, 27, 161, 0.7),
-          //     rgba(29, 210, 177, 0.7) 100%
-          //   );
-          // }
+         
         `}
       </style>
     </>
