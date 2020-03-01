@@ -36,9 +36,7 @@ const Books = props => {
       <div className="view" id={background}>
         <div className="container">
           <div className="col-12">
-            <h2 style={{ textAlign: "center", padding: "20px 0 10px 0" }}>
-              Books of {authorName === undefined ? <>...</> : authorName}
-            </h2>
+            <h2>Books of {authorName === undefined ? <>...</> : authorName}</h2>
             <table className="table table-striped" id="table-books">
               <thead>
                 <tr>
@@ -101,9 +99,15 @@ const Books = props => {
       </div>
       <style jsx>
         {`
+          h2 {
+            text-align: center;
+             padding: 20px 0 10px 0;
+             font-family: Lucida Handwriting; 
+          }
           .table-striped thead > tr > th {
             border-bottom: none;
           }
+
           #background1 {
             height: 100%;
             background-image: url("${bi}");

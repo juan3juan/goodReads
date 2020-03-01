@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import bi from "../img/bookImage3.jpg";
@@ -11,16 +11,18 @@ function Author() {
     setAuthor(e.target.value);
   };
   const handleClick = () => {
-    axios
-      .get("searchAuthor/" + author, {
-        headers: { "Content-Type": "application/json" }
-      })
-      .then(res => {
-        setAuthors([res.data.author]);
-      });
+    if (author !== undefined) {
+      axios
+        .get("searchAuthor/" + author, {
+          headers: { "Content-Type": "application/json" }
+        })
+        .then(res => {
+          setAuthors([res.data.author]);
+        });
+    }
   };
   console.log("~~~~~~~~~~~~~~~~~~authors");
-  console.log(authors.length);
+  console.log(authors);
   return (
     <>
       <div className="view" id="backgroundsource">
@@ -60,7 +62,9 @@ function Author() {
                       <tr key={i}>
                         <td>{au.name}</td>
                         <td>
-                          <Link to={"/books/" + au.id}>View Books</Link>
+                          <Link className="bookLink" to={"/books/" + au.id}>
+                            View {au.name}'s Books
+                          </Link>
                         </td>
                       </tr>
                     );
@@ -73,10 +77,15 @@ function Author() {
       </div>
       <style jsx>
         {`
-          h2,
-          th,
+          th{
+            color: dimgrey;
+            font-size: large
+          }
           td {
-            color: black;
+            color: dimgrey;
+            font-weight: bold;
+            font-style: italic;
+
           }
           .table-striped thead > tr > th {
             border-bottom: none;
@@ -98,6 +107,9 @@ function Author() {
           }
           #searchButton {
             width: 19%;
+          }
+          .bookLink {
+            color: #47A5C1;
           }
 
           // .rgba-gradient {
