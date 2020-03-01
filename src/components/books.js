@@ -3,35 +3,43 @@ import axios from "axios";
 import Pagination from "./common/Pagination";
 import bi from "../img/bookImage3.jpg";
 
+let initialpage = 0;
 const Books = props => {
   const [books, setBooks] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [authorName, setAuthorName] = useState();
   const [loading, setLoading] = useState("background2");
   const postsPerPage = 10;
+  useEffect(() => getBooks(), []);
 
-  useEffect(() => {
+  const getBooks = () => {
+    initialpage++;
     axios
-      .get("searchBooks/" + props.match.params.authorId, {
+      .get("searchBooks/" + props.match.params.authorId + "/" + initialpage, {
         headers: { "Content-Type": "application/json" }
       })
       .then(res => {
-        console.log(res);
+        let updatedbooks = books.concat(res.data.books.book);
         setAuthorName(res.data.name); //res.data.name
         setLoading("background1");
-        setBooks(res.data.books.book); //res.data.books.book
+        setBooks(updatedbooks); //res.data.books.book
       });
-  }, []);
+  };
 
   const handlePageChange = pageNumber => {
     window.scrollTo(0, 0);
     setCurrentPage(pageNumber);
+    if (pageNumber !== 1 && pageNumber === lastpageNumber) {
+      getBooks(false);
+    }
   };
+
   // Get current posts
+  const lastpageNumber = Math.ceil(books.length / postsPerPage);
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = books.slice(indexOfFirstPost, indexOfLastPost);
-  console.log("books: " + books);
+
   return (
     <>
       <div className="view" id={loading}>
@@ -49,9 +57,11 @@ const Books = props => {
                 </tr>
               </thead>
               <tbody>
-                {books !== undefined ? (
+                {books !== undefined || books.length > 0 ? (
                   <>
                     {currentPosts.map((book, i) => {
+                      console.log("********************************");
+                      console.log(book);
                       return (
                         <tr key={i}>
                           <td className="align-middle">{i + 1}</td>

@@ -56,26 +56,26 @@ app.get("/searchAuthor1/:authorName", (req, res) => {
   });
 });
 
-app.get("/books/searchBooks/:authorId", async(req, res) => {
+app.get("/books/searchBooks/:authorId/:pageNum", async (req, res) => {
   let authorId = req.params.authorId;
-  gr.getBooksByAuthor(authorId).then(response => {
+  let pageNum = parseInt(req.params.pageNum);
+  gr.getBooksByAuthor(authorId, pageNum).then(response => {
     res.send(response);
   });
 });
 
-app.get("/books/searchBooksAll/:authorId", async(req, res) => {
+app.get("/books/searchBooksAll/:authorId", async (req, res) => {
   let authorId = req.params.authorId;
   let pages = 1;
   let authorName = "";
   let books = [];
   let bookResp = {};
   let response = await gr.getBooksByAuthor(authorId);
-  if(response !== undefined){
-    pages = response.books.total/30;
+  if (response !== undefined) {
+    pages = response.books.total / 30;
     authorName = response.name;
-    if(response.books.total%30 !==0)
-      pages = pages+1;
-    for(let page=1; page<=pages; page++){
+    if (response.books.total % 30 !== 0) pages = pages + 1;
+    for (let page = 1; page <= pages; page++) {
       let respInner = await gr.getBooksByAuthor(authorId, page);
       books = books.concat(respInner.books.book);
     }
