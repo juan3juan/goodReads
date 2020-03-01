@@ -129,8 +129,9 @@ const Books = props => {
             height: 150px;
             width: 30px;
           }
+          
           .desc {
-            max-height: 100%;
+            height: 100%;
             overflow: auto;
           }
           #bookimage {
@@ -145,6 +146,14 @@ const Books = props => {
           .hover01 figure:hover img {
             -webkit-transform: scale(1.5);
             transform: scale(1.5);
+          }
+          @media screen and (max-width: 600px) {
+            #table-books td {
+              width: 15px;
+            }
+            #background1 {
+              width: 100vh;
+            }
           }
         `}
       </style>
