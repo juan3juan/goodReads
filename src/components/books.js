@@ -7,6 +7,7 @@ const Books = props => {
   const [books, setBooks] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [authorName, setAuthorName] = useState();
+  const [background, setLoading] = useState("background2");
   const postsPerPage = 10;
 
   useEffect(() => {
@@ -17,6 +18,7 @@ const Books = props => {
       .then(res => {
         console.log(res);
         setAuthorName(res.data.name);
+        setLoading("background1");
         setBooks(res.data.books.book);
       });
   }, []);
@@ -31,7 +33,7 @@ const Books = props => {
   console.log("currentPage: " + currentPage);
   return (
     <>
-      <div className="view" id="backgroundsource">
+      <div className="view" id={background}>
         <div className="container">
           <div className="col-12">
             <h2 style={{ textAlign: "center", padding: "20px 0 10px 0" }}>
@@ -52,6 +54,7 @@ const Books = props => {
                   <>
                     {currentPosts.map((book, i) => {
                       return (
+
                         <tr key={i}>
                           <td className="align-middle">{i + 1}</td>
                           <td className="align-middle">{book.title}</td>
@@ -101,11 +104,20 @@ const Books = props => {
           .table-striped thead > tr > th {
             border-bottom: none;
           }
-          #backgroundsource {
-            height: 100vh;
-            //background-color:#f4f1ea;
+          #background1 {
+            height: 100%;
             background-image: url("${bi}");
-            background-repeat: repeat;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+          }
+          #background2 {
+            height: 100vh;
+            background-image: url("${bi}");
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
             background-size: cover;
           }
                   
