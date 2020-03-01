@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Pagination from "./common/Pagination";
+import bi from "../img/bookImage3.jpg";
 
 const Books = props => {
   const [books, setBooks] = useState([]);
@@ -30,71 +31,84 @@ const Books = props => {
   console.log("currentPage: " + currentPage);
   return (
     <>
-      <div className="container">
-        <div className="col-12">
-          <h2 style={{ textAlign: "center", padding: "20px 0 10px 0" }}>
-            Books of {authorName === undefined ? <>..........</> : authorName}
-          </h2>
-          <table className="table table-striped" id="table-books">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Title</th>
-                <th>Author</th>
-                <th>Image</th>
-                <th>Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              {books !== undefined ? (
-                <>
-                  {currentPosts.map((book, i) => {
-                    return (
-                      <tr key={i}>
-                        <td className="align-middle">{i + 1}</td>
-                        <td className="align-middle">{book.title}</td>
-                        <td className="align-middle">
-                          {book.authors.author.name}
-                        </td>
-                        <td>
-                          <div className="hover01 column">
-                            <div>
-                              <figure>
-                                <img
-                                  id="bookimage"
-                                  src={book.image_url}
-                                  className="img-fluid img-thumbnail"
-                                  alt="book"
-                                />
-                              </figure>
+      <div className="view" id="backgroundsource">
+        <div className="container">
+          <div className="col-12">
+            <h2 style={{ textAlign: "center", padding: "20px 0 10px 0" }}>
+              Books of {authorName === undefined ? <>...</> : authorName}
+            </h2>
+            <table className="table table-striped" id="table-books">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Title</th>
+                  <th>Author</th>
+                  <th>Image</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                {books !== undefined ? (
+                  <>
+                    {currentPosts.map((book, i) => {
+                      return (
+                        <tr key={i}>
+                          <td className="align-middle">{i + 1}</td>
+                          <td className="align-middle">{book.title}</td>
+                          <td className="align-middle">
+                            {book.authors.author.name}
+                          </td>
+                          <td>
+                            <div className="hover01 column">
+                              <div>
+                                <figure>
+                                  <img
+                                    id="bookimage"
+                                    src={book.image_url}
+                                    className="img-fluid img-thumbnail"
+                                    alt="book"
+                                  />
+                                </figure>
+                              </div>
                             </div>
-                          </div>
-                        </td>
-                        <td>
-                          <div
-                            id="desc"
-                            dangerouslySetInnerHTML={{
-                              __html: book.description
-                            }}
-                          />
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </>
-              ) : null}
-            </tbody>
-          </table>
-          <Pagination
-            postsPerPage={postsPerPage}
-            totalPosts={books.length}
-            paginate={handlePageChange}
-            currentPage={currentPage}
-          />
+                          </td>
+                          <td>
+                            <div
+                              id="desc"
+                              dangerouslySetInnerHTML={{
+                                __html: book.description
+                              }}
+                            />
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </>
+                ) : null}
+              </tbody>
+            </table>
+            <Pagination
+              postsPerPage={postsPerPage}
+              totalPosts={books.length}
+              paginate={handlePageChange}
+              currentPage={currentPage}
+            />
+          </div>
         </div>
       </div>
       <style jsx>
         {`
+          .table-striped thead > tr > th {
+            border-bottom: none;
+          }
+          #backgroundsource {
+            height: 100vh;
+            //background-color:#f4f1ea;
+            background-image: url("${bi}");
+            background-repeat: repeat;
+            background-size: cover;
+          }
+                  
           #table-books td {
             height: 150px;
             width: 30px;
