@@ -24,7 +24,7 @@ function App() {
           <Route path="/author" component={Author} />
         </div> */}
         <Route path="/books/:authorId" component={Books} />
-        <Route path="/author" component={Author} />
+        <Route path="/" exact component={Author} />
       </Router>
     </div>
   );

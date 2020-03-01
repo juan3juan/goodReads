@@ -5,7 +5,9 @@ import Pagination from "./common/Pagination";
 const Books = props => {
   const [books, setBooks] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage] = useState(10);
+  const [authorName, setAuthorName] = useState();
+  const postsPerPage = 10;
+
   useEffect(() => {
     axios
       .get("http://localhost:3010/searchBooks/" + props.match.params.authorId, {
@@ -13,7 +15,8 @@ const Books = props => {
       })
       .then(res => {
         console.log(res);
-        setBooks(res.data.book);
+        setAuthorName(res.data.name);
+        setBooks(res.data.books.book);
       });
   }, []);
 
@@ -29,7 +32,9 @@ const Books = props => {
     <>
       <div className="container">
         <div className="col-12">
-          <h2>Books</h2>
+          <h2 style={{ textAlign: "center", padding: "20px 0 10px 0" }}>
+            Books of {authorName}
+          </h2>
           <table className="table table-striped" id="table-books">
             <thead>
               <tr>
@@ -91,7 +96,7 @@ const Books = props => {
       <style jsx>
         {`
           #table-books td {
-            height: 100px;
+            height: 150px;
             width: 30px;
           }
           #desc {

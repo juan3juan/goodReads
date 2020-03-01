@@ -60,7 +60,9 @@ app.get("/searchBooks/:authorId", (req, res) => {
   let authorId = req.params.authorId;
   gr.getBooksByAuthor(authorId).then(response => {
     // if (Array.isArray(response.books.book)) {
-    res.send(response.books);
+    // console.log("response");
+    // console.log(response);
+    res.send(response);
     // } else {
     //response.books.book
     //   res.send([response.books]);
