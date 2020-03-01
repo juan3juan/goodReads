@@ -24,6 +24,7 @@ const Books = props => {
   }, []);
 
   const handlePageChange = pageNumber => {
+    window.scrollTo(0, 0);
     setCurrentPage(pageNumber);
   };
   // Get current posts
@@ -52,7 +53,6 @@ const Books = props => {
                   <>
                     {currentPosts.map((book, i) => {
                       return (
-
                         <tr key={i}>
                           <td className="align-middle">{i + 1}</td>
                           <td className="align-middle">{book.title}</td>
