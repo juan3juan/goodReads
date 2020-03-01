@@ -63,9 +63,9 @@ const Pagination = ({ postsPerPage, totalPosts, paginate, currentPage }) => {
           border: 1px solid #ddd;
         }
         #pagination li a:active {
-          background-color: #0099ff;
+          background-color: #eeddaa;
           color: white;
-          border: 1px solid #0099ff;
+          border: 1px solid #eeddaa;
         }
         .active {
           background-color: #eeddaa;

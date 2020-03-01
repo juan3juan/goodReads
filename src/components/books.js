@@ -7,7 +7,7 @@ const Books = props => {
   const [books, setBooks] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [authorName, setAuthorName] = useState();
-  const [background, setLoading] = useState("background2");
+  const [loading, setLoading] = useState("background2");
   const postsPerPage = 10;
 
   useEffect(() => {
@@ -17,9 +17,9 @@ const Books = props => {
       })
       .then(res => {
         console.log(res);
-        setAuthorName(res.data.name);
+        setAuthorName(res.data.name); //res.data.name
         setLoading("background1");
-        setBooks(res.data.books.book);
+        setBooks(res.data.books.book); //res.data.books.book
       });
   }, []);
 
@@ -30,10 +30,10 @@ const Books = props => {
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = books.slice(indexOfFirstPost, indexOfLastPost);
-  console.log("currentPage: " + currentPage);
+  console.log("books: " + books);
   return (
     <>
-      <div className="view" id={background}>
+      <div className="view" id={loading}>
         <div className="container">
           <div className="col-12">
             <h2>Books of {authorName === undefined ? <>...</> : authorName}</h2>
