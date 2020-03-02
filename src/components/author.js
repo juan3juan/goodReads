@@ -102,7 +102,7 @@ function Author() {
           animation: scroll-left 20s linear infinite;
       }
       #second {
-        padding-top: 18px;
+        padding-top: 22;
         animation-delay: 8s;
     }
       
@@ -167,11 +167,19 @@ function Author() {
           .bookLink {
             color: #47A5C1;
           }
-          @media screen and (max-width : 1900px)
+          @media screen and (max-width : 3000px)
           {
             p
             {
               font-size:xx-large;
+            }
+            .marquee
+            {
+              height:100px;
+            }
+            #second
+            {
+              padding-top:30px;
             }
           }
           @media screen and (max-width : 1204px)
@@ -182,6 +190,7 @@ function Author() {
             }
             #second
             {
+              padding-top:25px;
               animation-delay: 10s;
             }
             #searchArea {
@@ -199,6 +208,7 @@ function Author() {
              }
             #second
             {
+              padding-top:15px;
               animation-delay: 13s;
             }
           }
