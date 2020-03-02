@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Pagination from "./common/Pagination";
+import { Link } from "react-router-dom";
 import bi from "../img/backgroundImage.jpg";
 import "../css/style.css";
 
@@ -96,6 +97,9 @@ const Books = props => {
       <div className="view" id={loading}>
         <div className="container">
           <div className="col-12">
+            <Link className="backLink" to="/">
+              GO BACK
+            </Link>
             <h2>
               Books of {authorName === undefined ? <>......</> : authorName}
             </h2>

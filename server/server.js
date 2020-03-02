@@ -10,12 +10,17 @@ app.use(bodyParser.json()); //choose querystring parsing the URL-encoded data
 
 //#region API Credentials
 const myCredentials = {
-  key: process.env.goodReadsApikey,
-  secret: process.env.goodReadsApisecret
+  // key: process.env.goodReadsApikey,
+  // secret: process.env.goodReadsApisecret
+  key: "RDfV4oPehM6jNhxfNQzzQ",
+  secret: "fu8fQ5oGQEDlwiICw45dGSuxiu13STyIrxY0Rb6ibI"
 };
 
 const gr = goodreads(myCredentials);
 //#endregion
+app.get("/test", (req, res) => {
+  res.send("response");
+});
 
 //search by Author
 app.get("/searchAuthor/:authorName", (req, res) => {

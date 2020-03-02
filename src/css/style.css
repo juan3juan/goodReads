@@ -22,9 +22,17 @@ td {
 .bookLink {
   color: #47a5c1;
 }
+.backLink {
+  color: #47a5c1;
+  font-weight: bold;
+  font-family: Lucida Handwriting;
+  display: inline-block;
+  height: 25px;
+  padding-top: 10px;
+}
 h2 {
   text-align: center;
-  padding: 20px 0 10px 0;
+  padding: 0 0 10px 0;
   font-family: Lucida Handwriting;
 }
 .table-striped thead > tr > th {
