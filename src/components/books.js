@@ -8,6 +8,7 @@ import "../css/style.css";
 let initialpage = 0;
 //total numer of books for the current author. value got setted after the first API call
 let totalbooks = -1;
+let Prevauthor = "";
 
 const Books = props => {
   //#region Use State and Use Effect
@@ -36,6 +37,17 @@ const Books = props => {
 
   //Method to call service to get books
   const getBooks = () => {
+    //Runing for a new Author, reset the value incase user use back button
+    if (Prevauthor !== "" && authorName !== "" && Prevauthor !== authorName) {
+      initialpage = 0;
+      totalbooks = -1;
+      Prevauthor = "";
+    }
+    //if already the last page, don't run again
+    if (initialpage > 0 && books.length >= totalbooks) {
+      return;
+    }
+
     //pagecounter to indentify which page to call
     initialpage++;
     axios
@@ -52,9 +64,11 @@ const Books = props => {
           //append new books to books already been loaded
           let updatedbooks = books.concat(res.data.books.book);
           setAuthorName(res.data.name); //res.data.name
-
+          if (Prevauthor === "") {
+            Prevauthor = res.data.name;
+          }
           //If the books is less than 3 then change to style for background Image
-          if (updatedbooks.length > 3) {
+          if (updatedbooks.length > 3 && currentPosts.length > 3) {
             setLoading("background1");
           }
           //Update total books

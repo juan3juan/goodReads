@@ -36,8 +36,6 @@ const xmlToJson = xml => {
 app.get("/searchAuthor/:authorName", (req, res) => {
   let authorName = req.params.authorName;
   gr.searchAuthors(authorName).then(response => {
-    console.log("**************************************");
-    console.log(response.headers);
     res.send(response);
   });
 });
@@ -48,10 +46,7 @@ app.get("/searchAuthor1/:authorName", (req, res) => {
   let key = myCredentials.key;
   let secret = myCredentials.secret;
   let url = baseUrl + authorName + "?key=" + key + "&secret=" + secret;
-  console.log("url");
-  console.log(url);
   fetch(url).then(response => {
-    console.log(response.data);
     res.send(response);
   });
 });
@@ -82,8 +77,6 @@ app.get("/books/searchBooksAll/:authorId", async (req, res) => {
   }
   bookResp.books = books;
   bookResp.authorName = authorName;
-  console.log("response");
-  console.log(bookResp.books.length);
   res.send(bookResp);
 });
 
