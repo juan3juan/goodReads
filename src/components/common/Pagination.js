@@ -55,7 +55,6 @@ const Pagination = ({ postsPerPage, totalPosts, paginate, currentPage }) => {
       <style jsx>{`
         #pagination {
           margin-top: 25px;
-          bacoground-color: red;
         }
         #pagination li a {
           cursor: pointer;
