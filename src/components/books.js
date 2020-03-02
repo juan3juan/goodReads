@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Pagination from "./common/Pagination";
-import bi from "../img/bookImage3.jpg";
+import bi from "../img/backgroundImage.jpg";
 
 let initialpage = 0;
 let totalbooks = -1;
