@@ -58,30 +58,6 @@
     transform: translateX(-100%);
   }
 }
-th {
-  color: dimgrey;
-  font-size: large;
-}
-td {
-  color: dimgrey;
-  font-weight: bold;
-  font-style: italic;
-}
-.table-striped thead > tr > th {
-  border-bottom: none;
-}
-#searchArea {
-  padding-top: 40px;
-}
-#authorSearch {
-  width: 80%;
-}
-#searchButton {
-  width: 19%;
-}
-.bookLink {
-  color: #47a5c1;
-}
 @media screen and (max-width: 3000px) {
   p {
     font-size: xx-large;
@@ -115,45 +91,5 @@ td {
   #second {
     padding-top: 15px;
     animation-delay: 13s;
-  }
-}
-
-h2 {
-  text-align: center;
-  padding: 20px 0 10px 0;
-  font-family: Lucida Handwriting;
-}
-.table-striped thead > tr > th {
-  border-bottom: none;
-}
-
-#table-books td {
-  height: 150px;
-  width: 30px;
-}
-
-.desc {
-  height: 100%;
-  overflow: auto;
-}
-#bookimage {
-  height: "100%";
-}
-.hover01 figure img {
-  -webkit-transform: scale(1);
-  transform: scale(1);
-  -webkit-transition: 0.3s ease-in-out;
-  transition: 0.3s ease-in-out;
-}
-.hover01 figure:hover img {
-  -webkit-transform: scale(1.5);
-  transform: scale(1.5);
-}
-@media screen and (max-width: 600px) {
-  #table-books td {
-    width: 15px;
-  }
-  #background1 {
-    width: 100vh;
   }
 }

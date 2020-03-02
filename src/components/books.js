@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Pagination from "./common/Pagination";
 import bi from "../img/backgroundImage.jpg";
+import "../css/style.css";
 
 let initialpage = 0;
 let totalbooks = -1;
@@ -120,16 +121,7 @@ const Books = props => {
         </div>
       </div>
       <style jsx>
-        {`
-          h2 {
-            text-align: center;
-             padding: 20px 0 10px 0;
-             font-family: Lucida Handwriting; 
-          }
-          .table-striped thead > tr > th {
-            border-bottom: none;
-          }
-
+        {`         
           #background1 {
             height: 100%;
             background-image: url("${bi}");
@@ -145,38 +137,7 @@ const Books = props => {
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
-          }
-                  
-          #table-books td {
-            height: 150px;
-            width: 30px;
-          }
-          
-          .desc {
-            height: 100%;
-            overflow: auto;
-          }
-          #bookimage {
-            height: "100%";
-          }
-          .hover01 figure img {
-            -webkit-transform: scale(1);
-            transform: scale(1);
-            -webkit-transition: 0.3s ease-in-out;
-            transition: 0.3s ease-in-out;
-          }
-          .hover01 figure:hover img {
-            -webkit-transform: scale(1.5);
-            transform: scale(1.5);
-          }
-          @media screen and (max-width: 600px) {
-            #table-books td {
-              width: 15px;
-            }
-            #background1 {
-              width: 100vh;
-            }
-          }
+          }               
         `}
       </style>
     </>
