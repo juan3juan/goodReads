@@ -1,10 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import bi from "../img/bookImage3.jpg";
 function Author() {
   const [author, setAuthor] = useState();
   const [authors, setAuthors] = useState([]); //{ name: "test", id: "1" }
+  useEffect(() => {
+    const listener = event => {
+      if (event.code === "Enter" || event.code === "NumpadEnter") {
+        console.log("DFGDFGDFGDFG");
+        console.log({ author });
+        handleClick();
+      }
+    };
+    document.addEventListener("keydown", listener);
+    return () => {
+      document.removeEventListener("keydown", listener);
+    };
+  }, [author]);
 
   const handleChange = e => {
     setAuthor(e.target.value);
