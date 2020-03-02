@@ -60,8 +60,6 @@ const Books = props => {
                 {books !== undefined || books.length > 0 ? (
                   <>
                     {currentPosts.map((book, i) => {
-                      console.log("********************************");
-                      console.log(book);
                       return (
                         <tr key={i}>
                           <td className="align-middle">{i + 1}</td>

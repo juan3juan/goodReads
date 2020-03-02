@@ -19,19 +19,21 @@ const Pagination = ({ postsPerPage, totalPosts, paginate, currentPage }) => {
             {"<<"}
           </a>
         </li>
-        {pageNumbers.map(number => (
-          <li key={number} className="page-item">
-            <a
-              onClick={() => paginate(number)}
-              href="#!"
-              className={
-                currentPage === number ? "page-link active" : "page-link"
-              }
-            >
-              {number}
-            </a>
-          </li>
-        ))}
+        {pageNumbers.map(number =>
+          Math.abs(currentPage - number) <= 2 ? (
+            <li key={number} className="page-item">
+              <a
+                onClick={() => paginate(number)}
+                href="#!"
+                className={
+                  currentPage === number ? "page-link active" : "page-link"
+                }
+              >
+                {number}
+              </a>
+            </li>
+          ) : null
+        )}
         <li className="page-item">
           <a
             onClick={() =>
@@ -61,6 +63,8 @@ const Pagination = ({ postsPerPage, totalPosts, paginate, currentPage }) => {
           text-decoration: none;
           transition: background-color 0.3s;
           border: 1px solid #ddd;
+        }
+        #page-item-hide {
         }
         #pagination li a:active {
           background-color: #eeddaa;
