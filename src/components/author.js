@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import bi from "../img/backgroundImage.jpg";
+import "../css/style.css";
+
 function Author() {
   const [author, setAuthor] = useState();
   const [authors, setAuthors] = useState([]); //{ name: "test", id: "1" }
