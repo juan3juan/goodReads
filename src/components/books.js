@@ -67,12 +67,15 @@ const Books = props => {
           if (Prevauthor === "") {
             Prevauthor = res.data.name;
           }
-          //If the books is less than 3 then change to style for background Image
-          if (updatedbooks.length > 3 && currentPosts.length > 3) {
-            setLoading("background1");
-          }
           //Update total books
           setBooks(updatedbooks); //res.data.books.book
+
+          //If the books is less than 3 then change to style for background Image
+          console.log(updatedbooks.length);
+          console.log(currentPosts.length);
+          if (updatedbooks.length > 3) {
+            setLoading("background1");
+          }
         }
       });
   };
