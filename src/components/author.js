@@ -26,8 +26,8 @@ function Author() {
       <div className="backgroundsource">
         <div className="marqueePadding container">
           <div className="marquee">
-            <h3>Where do you want to go today? Find it in a book</h3>
-            <h3 id="second">A book is a gift you can open again and again</h3>
+            <p>Where do you want to go today? Find it in a book</p>
+            <p id="second">A book is a gift you can open again and again</p>
           </div>
           <form className="form-inline md-form mr-auto mb-4" id="searchArea">
             <input
@@ -85,13 +85,14 @@ function Author() {
           position: relative;
       }
       
-      .marquee h3{
+      .marquee p{
           font-family: Lucida Handwriting; 
           position: absolute;
           width: 100%;
           height: 100%;
           margin: 0;
-          line-height: 50px;
+          white-space: nowrap;
+          font-size:small:
           text-align: center;
           -moz-transform: translateX(100%);
           -webkit-transform: translateX(100%);
@@ -135,11 +136,6 @@ function Author() {
               transform: translateX(-100%);
           }
       }
-            //  h3 {
-            //   text-align: center;
-            //    padding: 100px 0 10px 0;
-            //    font-family: Lucida Handwriting; 
-            // }
           th{
             color: dimgrey;
             font-size: large
@@ -161,7 +157,6 @@ function Author() {
           }
           #searchArea {
            padding-top:40px;
-
           }
           #authorSearch {
             width: 80%;
@@ -171,6 +166,41 @@ function Author() {
           }
           .bookLink {
             color: #47A5C1;
+          }
+          @media screen and (max-width : 1900px)
+          {
+            p
+            {
+              font-size:xx-large;
+            }
+          }
+          @media screen and (max-width : 1204px)
+          {
+            p
+            {
+              font-size:x-large;
+            }
+            #second
+            {
+              animation-delay: 10s;
+            }
+            #searchArea {
+              padding-top:25px;
+             }
+          }
+          @media screen and (max-width : 500px)
+          {
+            p
+            {
+              font-size:small;
+            }
+            #searchArea {
+              padding-top:15px;
+             }
+            #second
+            {
+              animation-delay: 13s;
+            }
           }
 
          
