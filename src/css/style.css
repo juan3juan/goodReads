@@ -65,7 +65,7 @@ h2 {
   #table-books td {
     width: 15px;
   }
-  #background1 {
+  .background1 {
     width: 100vh;
   }
 }
