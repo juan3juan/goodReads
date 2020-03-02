@@ -14,7 +14,7 @@ const Pagination = ({ postsPerPage, totalPosts, paginate, currentPage }) => {
           <a
             onClick={() => paginate(currentPage - 1 >= 1 ? currentPage - 1 : 1)}
             href="#!"
-            className="page-link"
+            className="page-link inactive"
           >
             {"<<"}
           </a>
@@ -26,7 +26,9 @@ const Pagination = ({ postsPerPage, totalPosts, paginate, currentPage }) => {
                 onClick={() => paginate(number)}
                 href="#!"
                 className={
-                  currentPage === number ? "page-link active" : "page-link"
+                  currentPage === number
+                    ? "page-link active"
+                    : "page-link inactive"
                 }
               >
                 {number}
@@ -44,7 +46,7 @@ const Pagination = ({ postsPerPage, totalPosts, paginate, currentPage }) => {
               )
             }
             href="#!"
-            className="page-link"
+            className="page-link inactive"
           >
             {">>"}
           </a>
@@ -73,6 +75,9 @@ const Pagination = ({ postsPerPage, totalPosts, paginate, currentPage }) => {
         }
         .active {
           background-color: #eeddaa;
+        }
+        .inactive {
+          background-color: #f0efd1;
         }
       `}</style>
     </nav>
