@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import bi from "../img/backgroundImage.jpg";
+import "../css/style.css";
+import "../css/marquee.css";
+
 function Author() {
   //#region  UseState and Use Effect
   //used to display the Autor typed in SearchBox
@@ -103,144 +106,12 @@ function Author() {
       </div>
       <style jsx>
         {`
-        .marqueePadding{
-          padding-top: 70px;
-        }
-        .marquee {
-          height: 70px;
-          overflow: hidden;
-          position: relative;
-      }
-      
-      .marquee p{
-          font-family: Lucida Handwriting; 
-          position: absolute;
-          width: 100%;
-          height: 100%;
-          margin: 0;
-          white-space: nowrap;
-          font-size:small:
-          text-align: center;
-          -moz-transform: translateX(100%);
-          -webkit-transform: translateX(100%);
-          transform: translateX(100%);
-          -moz-animation: scroll-left 2s linear infinite;
-          -webkit-animation: scroll-left 2s linear infinite;
-          animation: scroll-left 20s linear infinite;
-      }
-      #second {
-        padding-top: 22;
-        animation-delay: 8s;
-    }
-      
-      @-moz-keyframes scroll-left {
-          0% {
-              -moz-transform: translateX(100%);
-          }
-          100% {
-              -moz-transform: translateX(-100%);
-          }
-      }
-      
-      @-webkit-keyframes scroll-left {
-          0% {
-              -webkit-transform: translateX(100%);
-          }
-          100% {
-              -webkit-transform: translateX(-100%);
-          }
-      }
-      
-      @keyframes scroll-left {
-          0% {
-              -moz-transform: translateX(100%);
-              -webkit-transform: translateX(100%);
-              transform: translateX(100%);
-          }
-          100% {
-              -moz-transform: translateX(-100%);
-              -webkit-transform: translateX(-100%);
-              transform: translateX(-100%);
-          }
-      }
-          th{
-            color: dimgrey;
-            font-size: large
-          }
-          td {
-            color: dimgrey;
-            font-weight: bold;
-            font-style: italic;
-
-          }
-          .table-striped thead > tr > th {
-            border-bottom: none;
-          }
-          .backgroundsource {
-            height: 100vh;
-            background-image: url("${bi}");
-            background-repeat: repeat;
-            background-size: cover;
-          }
-          #searchArea {
-           padding-top:40px;
-          }
-          #authorSearch {
-            width: 80%;
-          }
-          #searchButton {
-            width: 19%;
-          }
-          .bookLink {
-            color: #47A5C1;
-          }
-          @media screen and (max-width : 3000px)
-          {
-            p
-            {
-              font-size:xx-large;
-            }
-            .marquee
-            {
-              height:100px;
-            }
-            #second
-            {
-              padding-top:30px;
-            }
-          }
-          @media screen and (max-width : 1204px)
-          {
-            p
-            {
-              font-size:x-large;
-            }
-            #second
-            {
-              padding-top:25px;
-              animation-delay: 10s;
-            }
-            #searchArea {
-              padding-top:25px;
-             }
-          }
-          @media screen and (max-width : 500px)
-          {
-            p
-            {
-              font-size:small;
-            }
-            #searchArea {
-              padding-top:15px;
-             }
-            #second
-            {
-              padding-top:15px;
-              animation-delay: 13s;
-            }
-          }
-
-         
+        .backgroundsource {
+          height: 100vh;
+          background-image: url("${bi}");
+          background-repeat: repeat;
+          background-size: cover;
+        }        
         `}
       </style>
     </>
