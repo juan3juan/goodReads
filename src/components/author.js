@@ -6,8 +6,12 @@ import "../css/style.css";
 import "../css/marquee.css";
 
 function Author() {
+  //#region  UseState and Use Effect
+  //used to display the Autor typed in SearchBox
   const [author, setAuthor] = useState();
+  //Used for Auhtors replied by the service
   const [authors, setAuthors] = useState([]); //{ name: "test", id: "1" }
+  //Add an event lister for Enter and Return Key
   useEffect(() => {
     const listener = event => {
       if (event.code === "Enter" || event.code === "NumpadEnter") {
@@ -19,10 +23,14 @@ function Author() {
       document.removeEventListener("keydown", listener);
     };
   }, [author]);
+  //#endregion
 
+  //#region Event Handlers
+  //Hanlder for input change
   const handleChange = e => {
     setAuthor(e.target.value);
   };
+  //Handler for Search Button Click
   const handleClick = () => {
     if (author !== undefined) {
       axios
@@ -34,7 +42,7 @@ function Author() {
         });
     }
   };
-
+  //#endregion
   return (
     <>
       <div className="backgroundsource">
