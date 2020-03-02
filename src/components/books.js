@@ -23,7 +23,7 @@ const Books = props => {
         if (totalbooks === -1) {
           totalbooks = res.data.books.total;
         }
-        if (books < totalbooks) {
+        if (books.length < totalbooks) {
           let updatedbooks = books.concat(res.data.books.book);
           setAuthorName(res.data.name); //res.data.name
           if (updatedbooks.length > 3) {
