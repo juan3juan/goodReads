@@ -8,21 +8,6 @@ function App() {
   return (
     <div className="App">
       <Router>
-        {/* <nav className="navbar navbar-expand navbar-light bg-light">
-          <ul className="navbar-nav">
-            <li className="navbar-item">
-              <Link to="/author" className="nav-link p-3">
-                Author
-              </Link>
-            </li>
-          </ul>
-        </nav> */}
-
-        {/* <br />
-        <div className="container">
-          <Route path="/edit/:id" component={Author} />
-          <Route path="/author" component={Author} />
-        </div> */}
         <Route path="/books/:authorId" component={Books} />
         <Route path="/" exact component={Author} />
       </Router>
