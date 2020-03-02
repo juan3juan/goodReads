@@ -3,50 +3,75 @@ import axios from "axios";
 import Pagination from "./common/Pagination";
 import bi from "../img/backgroundImage.jpg";
 
+//page counter for Books API call
 let initialpage = 0;
+//total numer of books for the current author. value got setted after the first API call
 let totalbooks = -1;
-const Books = props => {
-  const [books, setBooks] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [authorName, setAuthorName] = useState();
-  const [loading, setLoading] = useState("background2");
-  const postsPerPage = 10;
-  useEffect(() => getBooks(), []);
 
+const Books = props => {
+  //#region Use State and Use Effect
+  const [books, setBooks] = useState([]);
+  //Set current page for Pagination
+  const [currentPage, setCurrentPage] = useState(1);
+  //Set the Author Name for displaying in Book page
+  const [authorName, setAuthorName] = useState();
+  //Use to handle the backgroundImage size
+  const [loading, setLoading] = useState("background2");
+
+  //first API call
+  useEffect(() => getBooks(), []);
+  //#endregion
+
+  //#region variables for Paginiation
+  //Display 10 books perpage
+  const postsPerPage = 10;
+  const lastpageNumber = Math.ceil(books.length / postsPerPage);
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = books.slice(indexOfFirstPost, indexOfLastPost);
+  //#endregion
+
+  //#region Event Handlers
+
+  //Method to call service to get books
   const getBooks = () => {
+    //pagecounter to indentify which page to call
     initialpage++;
     axios
       .get("searchBooks/" + props.match.params.authorId + "/" + initialpage, {
         headers: { "Content-Type": "application/json" }
       })
       .then(res => {
+        //Save the total number of books
         if (totalbooks === -1) {
           totalbooks = res.data.books.total;
         }
+        //check whther there are books haven't load yet
         if (books.length < totalbooks) {
+          //append new books to books already been loaded
           let updatedbooks = books.concat(res.data.books.book);
           setAuthorName(res.data.name); //res.data.name
+
+          //If the books is less than 3 then change to style for background Image
           if (updatedbooks.length > 3) {
             setLoading("background1");
           }
+          //Update total books
           setBooks(updatedbooks); //res.data.books.book
         }
       });
   };
 
+  //Handler for Page change
   const handlePageChange = pageNumber => {
     window.scrollTo(0, 0);
     setCurrentPage(pageNumber);
     if (pageNumber !== 1 && pageNumber === lastpageNumber) {
-      getBooks(false);
+      //if it's the last page, then call the service again to get more books
+      getBooks();
     }
   };
-
-  // Get current posts
-  const lastpageNumber = Math.ceil(books.length / postsPerPage);
-  const indexOfLastPost = currentPage * postsPerPage;
-  const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentPosts = books.slice(indexOfFirstPost, indexOfLastPost);
+  //#endregion
 
   return (
     <>
