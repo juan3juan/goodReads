@@ -10,10 +10,8 @@ app.use(bodyParser.json()); //choose querystring parsing the URL-encoded data
 
 //#region API Credentials
 const myCredentials = {
-  // key: process.env.goodReadsApikey,
-  // secret: process.env.goodReadsApisecret
-  key: "RDfV4oPehM6jNhxfNQzzQ",
-  secret: "fu8fQ5oGQEDlwiICw45dGSuxiu13STyIrxY0Rb6ibI"
+  key: process.env.goodReadsApikey,
+  secret: process.env.goodReadsApisecret
 };
 
 const gr = goodreads(myCredentials);

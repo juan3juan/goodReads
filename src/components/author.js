@@ -52,14 +52,14 @@ function Author() {
             <p id="second">A book is a gift you can open again and again</p>
           </div>
           <form
-            className="form-inline md-form mr-auto mb-4"
+            className="form-inline"
             id="searchArea"
             onSubmit={
               handleChange //Handle Enterkey and Return Key Event inside input
             }
           >
             <input
-              className="form-control mr-sm-2"
+              className="form-control mr-2"
               id="authorSearch"
               type="text"
               placeholder="Search author"

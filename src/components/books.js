@@ -17,8 +17,6 @@ const Books = props => {
   const [currentPage, setCurrentPage] = useState(1);
   //Set the Author Name for displaying in Book page
   const [authorName, setAuthorName] = useState();
-  //Use to handle the backgroundImage size
-  const [loading, setLoading] = useState("background2");
 
   //first API call
   useEffect(() => getBooks(), []);
@@ -69,13 +67,6 @@ const Books = props => {
           }
           //Update total books
           setBooks(updatedbooks); //res.data.books.book
-
-          //If the books is less than 3 then change to style for background Image
-          console.log(updatedbooks.length);
-          console.log(currentPosts.length);
-          if (updatedbooks.length > 3) {
-            setLoading("background1");
-          }
         }
       });
   };
@@ -91,9 +82,11 @@ const Books = props => {
   };
   //#endregion
 
+  let backgroundsize = books.length > 3 ? " background1" : " background2";
+
   return (
     <>
-      <div className="view" className={loading}>
+      <div className={"view " + backgroundsize}>
         <div className="container">
           <div className="col-12">
             <Link className="backLink" to="/">
