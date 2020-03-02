@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import bi from "../img/backgroundImage.jpg";
 import "../css/style.css";
 import "../css/marquee.css";
 
@@ -10,9 +9,9 @@ function Author() {
   //used to display the Autor typed in SearchBox
   const [author, setAuthor] = useState();
   //Used for Auhtors replied by the service
-  const [authors, setAuthors] = useState([]); //{ name: "test", id: "1" }
-  //Add an event lister for Enter and Return Key
+  const [authors, setAuthors] = useState([]);
   useEffect(() => {
+    //Add an event lister for Enter and Return Key
     const listener = event => {
       if (event.code === "Enter" || event.code === "NumpadEnter") {
         handleClick();
@@ -28,6 +27,7 @@ function Author() {
   //#region Event Handlers
   //Hanlder for input change
   const handleChange = e => {
+    e.preventDefault();
     setAuthor(e.target.value);
   };
   //Handler for Search Button Click
@@ -54,11 +54,9 @@ function Author() {
           <form
             className="form-inline md-form mr-auto mb-4"
             id="searchArea"
-            onSubmit={e => {
-              //Handle Enterkey and Return Key Event inside input
-              e.preventDefault();
-              handleChange(e);
-            }}
+            onSubmit={
+              handleChange //Handle Enterkey and Return Key Event inside input
+            }
           >
             <input
               className="form-control mr-sm-2"
@@ -104,16 +102,6 @@ function Author() {
           )}
         </div>
       </div>
-      <style jsx>
-        {`
-        .backgroundsource {
-          height: 100vh;
-          background-image: url("${bi}");
-          background-repeat: repeat;
-          background-size: cover;
-        }        
-        `}
-      </style>
     </>
   );
 }

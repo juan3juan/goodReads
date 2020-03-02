@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Pagination from "./common/Pagination";
 import { Link } from "react-router-dom";
-import bi from "../img/backgroundImage.jpg";
 import "../css/style.css";
 
 //page counter for Books API call
@@ -94,7 +93,7 @@ const Books = props => {
 
   return (
     <>
-      <div className="view" id={loading}>
+      <div className="view" className={loading}>
         <div className="container">
           <div className="col-12">
             <Link className="backLink" to="/">
@@ -166,26 +165,6 @@ const Books = props => {
           </div>
         </div>
       </div>
-      <style jsx>
-        {`         
-          #background1 {
-            height: 100%;
-            background-image: url("${bi}");
-            background-attachment: fixed;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-          }
-          #background2 {
-            height: 100vh;
-            background-image: url("${bi}");
-            background-attachment: fixed;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-          }               
-        `}
-      </style>
     </>
   );
 };

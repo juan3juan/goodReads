@@ -69,3 +69,27 @@ h2 {
     width: 100vh;
   }
 }
+
+.backgroundsource {
+  height: 100vh;
+  background-image: url("../img/backgroundImage.jpg");
+  background-repeat: repeat;
+  background-size: cover;
+}
+
+.background1 {
+  height: 100%;
+  background-image: url("../img/backgroundImage.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.background2 {
+  height: 100vh;
+  background-image: url("../img/backgroundImage.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
