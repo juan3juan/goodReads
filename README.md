@@ -67,3 +67,5 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
 [![Run on Repl.it](https://repl.it/badge/github/juan3juan/goodReads)](https://repl.it/github/juan3juan/goodReads)
+
+onRepl: Create a new file called: .env and add the following: DANGEROUSLY_DISABLE_HOST_CHECK=true
