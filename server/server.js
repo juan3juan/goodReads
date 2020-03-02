@@ -10,8 +10,8 @@ app.use(cors());
 app.use(bodyParser.json()); //choose querystring parsing the URL-encoded data
 
 const myCredentials = {
-  key: "RDfV4oPehM6jNhxfNQzzQ",
-  secret: "fu8fQ5oGQEDlwiICw45dGSuxiu13STyIrxY0Rb6ibI"
+  key: process.env.goodReadsApikey,
+  secret: process.env.goodReadsApisecret
 };
 
 const gr = goodreads(myCredentials);
