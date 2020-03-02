@@ -80,6 +80,19 @@
     padding-top: 25px;
   }
 }
+@media screen and (max-width: 800px) {
+  p {
+    font-size: large;
+  }
+  #searchArea {
+    padding-top: 15px;
+  }
+  #second {
+    padding-top: 15px;
+    animation-delay: 13s;
+  }
+}
+
 @media screen and (max-width: 500px) {
   p {
     font-size: small;

@@ -1,3 +1,27 @@
+th {
+  color: dimgrey;
+  font-size: large;
+}
+td {
+  color: dimgrey;
+  font-weight: bold;
+  font-style: italic;
+}
+.table-striped thead > tr > th {
+  border-bottom: none;
+}
+#searchArea {
+  padding-top: 40px;
+}
+#authorSearch {
+  width: 80%;
+}
+#searchButton {
+  width: 19%;
+}
+.bookLink {
+  color: #47a5c1;
+}
 h2 {
   text-align: center;
   padding: 20px 0 10px 0;
@@ -29,11 +53,11 @@ h2 {
   -webkit-transform: scale(1.5);
   transform: scale(1.5);
 }
-/* @media screen and (max-width: 600px) { 
+@media screen and (max-width: 600px) {
   #table-books td {
     width: 15px;
   }
   #background1 {
     width: 100vh;
   }
-}*/
+}
