@@ -4,6 +4,7 @@ import Pagination from "./common/Pagination";
 import bi from "../img/bookImage3.jpg";
 
 let initialpage = 0;
+let totalbooks = -1;
 const Books = props => {
   const [books, setBooks] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -19,10 +20,17 @@ const Books = props => {
         headers: { "Content-Type": "application/json" }
       })
       .then(res => {
-        let updatedbooks = books.concat(res.data.books.book);
-        setAuthorName(res.data.name); //res.data.name
-        setLoading("background1");
-        setBooks(updatedbooks); //res.data.books.book
+        if (totalbooks === -1) {
+          totalbooks = res.data.books.total;
+        }
+        if (books < totalbooks) {
+          let updatedbooks = books.concat(res.data.books.book);
+          setAuthorName(res.data.name); //res.data.name
+          if (updatedbooks.length > 3) {
+            setLoading("background1");
+          }
+          setBooks(updatedbooks); //res.data.books.book
+        }
       });
   };
 
@@ -45,63 +53,69 @@ const Books = props => {
       <div className="view" id={loading}>
         <div className="container">
           <div className="col-12">
-            <h2>Books of {authorName === undefined ? <>...</> : authorName}</h2>
-            <table className="table table-striped" id="table-books">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Title</th>
-                  <th>Author</th>
-                  <th>Image</th>
-                  <th>Description</th>
-                </tr>
-              </thead>
-              <tbody>
-                {books !== undefined || books.length > 0 ? (
-                  <>
-                    {currentPosts.map((book, i) => {
-                      return (
-                        <tr key={i}>
-                          <td className="align-middle">{i + 1}</td>
-                          <td className="align-middle">{book.title}</td>
-                          <td className="align-middle">
-                            {book.authors.author.name}
-                          </td>
-                          <td>
-                            <div className="hover01 column">
-                              <div>
-                                <figure>
-                                  <img
-                                    id="bookimage"
-                                    src={book.image_url}
-                                    className="img-fluid img-thumbnail"
-                                    alt="book"
-                                  />
-                                </figure>
+            <h2>
+              Books of {authorName === undefined ? <>......</> : authorName}
+            </h2>
+            {books !== undefined && books.length > 0 ? (
+              <>
+                <table className="table table-striped" id="table-books">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Title</th>
+                      <th>Author</th>
+                      <th>Image</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <>
+                      {currentPosts.map((book, i) => {
+                        return (
+                          <tr key={i}>
+                            <td className="align-middle">{i + 1}</td>
+                            <td className="align-middle">{book.title}</td>
+                            <td className="align-middle">
+                              {book.authors.author.name}
+                            </td>
+                            <td>
+                              <div className="hover01 column">
+                                <div>
+                                  <figure>
+                                    <img
+                                      id="bookimage"
+                                      src={book.image_url}
+                                      className="img-fluid img-thumbnail"
+                                      alt="book"
+                                    />
+                                  </figure>
+                                </div>
                               </div>
-                            </div>
-                          </td>
-                          <td>
-                            <div
-                              className="desc"
-                              dangerouslySetInnerHTML={{
-                                __html: book.description
-                              }}
-                            />
-                          </td>
-                        </tr>
-                      );
-                    })}
-                  </>
+                            </td>
+                            <td>
+                              <div
+                                className="desc"
+                                dangerouslySetInnerHTML={{
+                                  __html: book.description
+                                }}
+                              />
+                            </td>
+                          </tr>
+                        );
+                      })}
+                    </>
+                  </tbody>
+                </table>
+                {lastpageNumber > 1 ? (
+                  <Pagination
+                    postsPerPage={postsPerPage}
+                    totalPosts={books.length}
+                    paginate={handlePageChange}
+                    currentPage={currentPage}
+                  />
                 ) : null}
-              </tbody>
-            </table>
-            <Pagination
-              postsPerPage={postsPerPage}
-              totalPosts={books.length}
-              paginate={handlePageChange}
-              currentPage={currentPage}
-            />
+              </>
+            ) : null}
           </div>
         </div>
       </div>
