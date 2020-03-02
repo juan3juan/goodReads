@@ -8,8 +8,6 @@ function Author() {
   useEffect(() => {
     const listener = event => {
       if (event.code === "Enter" || event.code === "NumpadEnter") {
-        console.log("DFGDFGDFGDFG");
-        console.log({ author });
         handleClick();
       }
     };
@@ -42,7 +40,15 @@ function Author() {
             <p>Where do you want to go today? Find it in a book</p>
             <p id="second">A book is a gift you can open again and again</p>
           </div>
-          <form className="form-inline md-form mr-auto mb-4" id="searchArea">
+          <form
+            className="form-inline md-form mr-auto mb-4"
+            id="searchArea"
+            onSubmit={e => {
+              //Handle Enterkey and Return Key Event inside input
+              e.preventDefault();
+              handleChange(e);
+            }}
+          >
             <input
               className="form-control mr-sm-2"
               id="authorSearch"
