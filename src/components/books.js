@@ -82,7 +82,8 @@ const Books = props => {
   };
   //#endregion
 
-  let backgroundsize = books.length > 3 ? " background1" : " background2";
+  let backgroundsize =
+    currentPosts.length >= 3 ? " background1" : " background2";
 
   return (
     <>
