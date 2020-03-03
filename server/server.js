@@ -3,8 +3,8 @@ const bodyParser = require("body-parser"); //parse incoming request bodies, req.
 const app = express();
 const cors = require("cors"); //middleware to anable access from initial request
 const goodreads = require("goodreads-api-node");
-
-const port = 3010;
+require("dotenv").config();
+const port = process.env.serverport || 3010;
 app.use(cors());
 app.use(bodyParser.json()); //choose querystring parsing the URL-encoded data
 
