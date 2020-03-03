@@ -1,0 +1,23 @@
+#pagination {
+  margin-top: 25px;
+}
+#pagination li a {
+  cursor: pointer;
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+  border: 1px solid #ddd;
+}
+#pagination li a:active {
+  background-color: #eeddaa;
+  color: white;
+  border: 1px solid #eeddaa;
+}
+.active {
+  background-color: #eeddaa;
+}
+.inactive {
+  background-color: #f0efd1;
+}

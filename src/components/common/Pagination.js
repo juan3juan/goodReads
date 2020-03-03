@@ -1,12 +1,12 @@
 import React from "react";
-
+import "../../css/pagination.css";
 const Pagination = ({ postsPerPage, totalPosts, paginate, currentPage }) => {
   const pageNumbers = [];
 
   for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
     pageNumbers.push(i);
   }
-  const active = "pagination justify-content-center " + "";
+
   return (
     <nav>
       <ul className="pagination justify-content-center" id="pagination">
@@ -52,33 +52,6 @@ const Pagination = ({ postsPerPage, totalPosts, paginate, currentPage }) => {
           </a>
         </li>
       </ul>
-      <style jsx>{`
-        #pagination {
-          margin-top: 25px;
-        }
-        #pagination li a {
-          cursor: pointer;
-          color: black;
-          float: left;
-          padding: 8px 16px;
-          text-decoration: none;
-          transition: background-color 0.3s;
-          border: 1px solid #ddd;
-        }
-        #page-item-hide {
-        }
-        #pagination li a:active {
-          background-color: #eeddaa;
-          color: white;
-          border: 1px solid #eeddaa;
-        }
-        .active {
-          background-color: #eeddaa;
-        }
-        .inactive {
-          background-color: #f0efd1;
-        }
-      `}</style>
     </nav>
   );
 };
