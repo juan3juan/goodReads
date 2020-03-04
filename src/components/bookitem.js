@@ -2,8 +2,8 @@ import React from "react";
 //import "../css/style.css";
 const BookItem = props => {
   return (
-    <tr key={props.key}>
-      <td className="align-middle">{props.key + 1}</td>
+    <tr key={props.id}>
+      <td className="align-middle">{props.id + 1}</td>
       <td className="align-middle">{props.book.title}</td>
       <td className="align-middle">{props.book.authors.author.name}</td>
       <td>
