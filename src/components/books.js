@@ -4,6 +4,7 @@ import BookItem from "./bookitem";
 import Pagination from "./common/Pagination";
 import { Link } from "react-router-dom";
 import "../css/style.css";
+import MetaTags from "react-meta-tags";
 
 //page counter for Books API call
 let initialpage = 0;
@@ -82,12 +83,29 @@ const Books = props => {
     }
   };
   //#endregion
-
+  const getWindowDimensions = () => {
+    const { outerWidth: width, outerHeight: height } = window;
+    return {
+      width,
+      height
+    };
+  };
   let backgroundsize =
     currentPosts.length >= 3 ? " backgroundstretch" : " background";
 
+  let windowWidth = getWindowDimensions().width;
+  let height = getWindowDimensions().height;
+  let scale = windowWidth < 400 ? 0.3 : windowWidth < 750 ? 0.5 : 1;
+  console.log("windowWidth");
+  console.log(windowWidth);
+  let con = "width=device-width, initial-scale=" + scale;
   return (
     <>
+      {windowWidth < 800 ? (
+        <MetaTags>
+          <meta name="viewport" content={con} />
+        </MetaTags>
+      ) : null}
       <div className={"view " + backgroundsize}>
         <div className="container">
           <div className="col-12">
@@ -95,16 +113,18 @@ const Books = props => {
               GO BACK
             </Link>
             <div>
-              <h2>
-                Books of {authorName === undefined ? <>......</> : authorName}
-              </h2>
               {authorName === undefined ? (
-                <div className="text-center">
-                  <div className="spinner-border text-info" role="status">
-                    <span className="sr-only">Loading...</span>
+                <div>
+                  <h2>Books of ......</h2>
+                  <div className="text-center">
+                    <div className="spinner-border text-info" role="status">
+                      <span className="sr-only">Loading...</span>
+                    </div>
                   </div>
                 </div>
-              ) : null}
+              ) : (
+                <h2>Books of authorName</h2>
+              )}
             </div>
             {books !== undefined && books.length > 0 ? (
               <>
