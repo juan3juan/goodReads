@@ -111,7 +111,7 @@ const Books = props => {
                   </thead>
                   <tbody>
                     {currentPosts.map((book, i) => {
-                      return <BookItem book={book} id={i} />;
+                      return <BookItem key={i} book={book} id={i} />;
                     })}
                   </tbody>
                 </table>
