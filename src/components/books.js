@@ -94,9 +94,18 @@ const Books = props => {
             <Link className="backLink" to="/">
               GO BACK
             </Link>
-            <h2>
-              Books of {authorName === undefined ? <>......</> : authorName}
-            </h2>
+            <div>
+              <h2>
+                Books of {authorName === undefined ? <>......</> : authorName}
+              </h2>
+              {authorName === undefined ? (
+                <div className="text-center">
+                  <div className="spinner-border text-info" role="status">
+                    <span className="sr-only">Loading...</span>
+                  </div>
+                </div>
+              ) : null}
+            </div>
             {books !== undefined && books.length > 0 ? (
               <>
                 <table className="table table-striped" id="table-books">
