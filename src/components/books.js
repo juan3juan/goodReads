@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import BookItem from "./bookitem";
 import Pagination from "./common/Pagination";
 import { Link } from "react-router-dom";
 import "../css/style.css";
@@ -109,41 +110,9 @@ const Books = props => {
                     </tr>
                   </thead>
                   <tbody>
-                    <>
-                      {currentPosts.map((book, i) => {
-                        return (
-                          <tr key={i}>
-                            <td className="align-middle">{i + 1}</td>
-                            <td className="align-middle">{book.title}</td>
-                            <td className="align-middle">
-                              {book.authors.author.name}
-                            </td>
-                            <td>
-                              <div className="hover01 column">
-                                <div>
-                                  <figure>
-                                    <img
-                                      id="bookimage"
-                                      src={book.image_url}
-                                      className="img-fluid img-thumbnail"
-                                      alt="book"
-                                    />
-                                  </figure>
-                                </div>
-                              </div>
-                            </td>
-                            <td>
-                              <div
-                                className="desc"
-                                dangerouslySetInnerHTML={{
-                                  __html: book.description
-                                }}
-                              />
-                            </td>
-                          </tr>
-                        );
-                      })}
-                    </>
+                    {currentPosts.map((book, i) => {
+                      return <BookItem book={book} key={i} />;
+                    })}
                   </tbody>
                 </table>
                 {lastpageNumber > 1 ? (
