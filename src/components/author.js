@@ -45,7 +45,7 @@ function Author() {
   //#endregion
   return (
     <>
-      <div className="backgroundsource">
+      <div className="background">
         <div className="marqueePadding container">
           <div className="marquee">
             <p>Where do you want to go today? Find it in a book</p>

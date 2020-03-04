@@ -111,7 +111,7 @@ h2 {
   #table-books td {
     width: 15px;
   }
-  .background1 {
+  .backgroundstretch {
     width: 100vh;
   }
   #searchButton {
@@ -123,14 +123,7 @@ h2 {
   }
 }
 
-.backgroundsource {
-  height: 100vh;
-  background-image: url("../img/backgroundImage.jpg");
-  background-repeat: repeat;
-  background-size: cover;
-}
-
-.background1 {
+.backgroundstretch {
   height: 100%;
   background-image: url("../img/backgroundImage.jpg");
   background-attachment: fixed;
@@ -138,7 +131,7 @@ h2 {
   background-repeat: no-repeat;
   background-size: cover;
 }
-.background2 {
+.background {
   height: 100vh;
   background-image: url("../img/backgroundImage.jpg");
   background-attachment: fixed;
