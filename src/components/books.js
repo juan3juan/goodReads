@@ -94,18 +94,13 @@ const Books = props => {
     currentPosts.length >= 3 ? " backgroundstretch" : " background";
 
   let windowWidth = getWindowDimensions().width;
-  let height = getWindowDimensions().height;
-  let scale = windowWidth < 400 ? 0.3 : windowWidth < 750 ? 0.5 : 1;
-  console.log("windowWidth");
-  console.log(windowWidth);
+  let scale = windowWidth < 750 ? 0.5 : 1;
   let con = "width=device-width, initial-scale=" + scale;
   return (
     <>
-      {windowWidth < 800 ? (
-        <MetaTags>
-          <meta name="viewport" content={con} />
-        </MetaTags>
-      ) : null}
+      <MetaTags>
+        <meta name="viewport" content={con} />
+      </MetaTags>
       <div className={"view " + backgroundsize}>
         <div className="container">
           <div className="col-12">
