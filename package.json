@@ -14,7 +14,7 @@
     "eslint-plugin-flowtype": "^3.13.0",
     "express": "^4.17.1",
     "goodreads-api-node": "0.0.10",
-    "jquery": "^1.9.1",
+    "jquery": ">=3.4.0",
     "node-env-run": "^3.0.2",
     "node-fetch": "^2.6.0",
     "nodemon": "^2.0.2",
