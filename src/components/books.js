@@ -118,7 +118,7 @@ const Books = props => {
                   </div>
                 </div>
               ) : (
-                <h2>Books of authorName</h2>
+                <h2>Books of {authorName}</h2>
               )}
             </div>
             {books !== undefined && books.length > 0 ? (
