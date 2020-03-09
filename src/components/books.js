@@ -94,7 +94,7 @@ const Books = props => {
     currentPosts.length >= 3 ? " heightStretch" : " heightVH";
 
   let windowWidth = getWindowDimensions().width;
-  let scale = windowWidth < 750 ? 0.5 : 1;
+  let scale = windowWidth < 750 ? 0.6 : 1;
   let con = "width=device-width, initial-scale=" + scale;
   return (
     <>
