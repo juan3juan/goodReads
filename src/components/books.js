@@ -91,7 +91,7 @@ const Books = props => {
     };
   };
   let backgroundsize =
-    currentPosts.length >= 3 ? " backgroundstretch" : " background";
+    currentPosts.length >= 3 ? " heightStretch" : " heightVH";
 
   let windowWidth = getWindowDimensions().width;
   let scale = windowWidth < 750 ? 0.5 : 1;
@@ -101,7 +101,7 @@ const Books = props => {
       <MetaTags>
         <meta name="viewport" content={con} />
       </MetaTags>
-      <div className={"view " + backgroundsize}>
+      <div className={"view background" + backgroundsize}>
         <div className="container">
           <div className="col-12">
             <Link className="backLink" to="/">

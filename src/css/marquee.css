@@ -1,3 +1,4 @@
+/* Styles for the two marquees*/
 .marqueePadding {
   padding-top: 70px;
 }
@@ -22,7 +23,8 @@
   -webkit-animation: scroll-left 2s linear infinite;
   animation: scroll-left 20s linear infinite;
 }
-#second {
+/*Add delays between the first and second maequee*/
+#secondMarquee {
   padding-top: 22px;
   animation-delay: 8s;
 }
