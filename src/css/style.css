@@ -7,9 +7,17 @@ td {
   font-weight: bold;
   font-style: italic;
 }
+
+h2 {
+  text-align: center;
+  padding: 0 0 10px 0;
+  font-family: Lucida Handwriting;
+}
 .table-striped thead > tr > th {
   border-bottom: none;
 }
+
+/* Styles for Search Area*/
 #searchArea {
   padding-top: 40px;
 }
@@ -30,14 +38,6 @@ td {
   height: 25px;
   padding-top: 10px;
 }
-h2 {
-  text-align: center;
-  padding: 0 0 10px 0;
-  font-family: Lucida Handwriting;
-}
-.table-striped thead > tr > th {
-  border-bottom: none;
-}
 
 #table-books td {
   height: 150px;
@@ -48,6 +48,8 @@ h2 {
   height: 100%;
   overflow: auto;
 }
+
+/* Book Image Style */
 #bookimage {
   height: "100%";
 }
@@ -61,6 +63,8 @@ h2 {
   -webkit-transform: scale(1.5);
   transform: scale(1.5);
 }
+
+/* Styles for Different screensize*/
 @media screen and (max-width: 3000px) {
   p {
     font-size: xx-large;
@@ -68,7 +72,7 @@ h2 {
   .marquee {
     height: 100px;
   }
-  #second {
+  #secondMarquee {
     padding-top: 30px;
   }
 }
@@ -76,7 +80,7 @@ h2 {
   p {
     font-size: x-large;
   }
-  #second {
+  #secondMarquee {
     padding-top: 25px;
     animation-delay: 10s;
   }
@@ -91,7 +95,7 @@ h2 {
   #searchArea {
     padding-top: 15px;
   }
-  #second {
+  #secondMarquee {
     padding-top: 15px;
     animation-delay: 13s;
   }
@@ -104,7 +108,7 @@ h2 {
   #searchArea {
     padding-top: 15px;
   }
-  #second {
+  #secondMarquee {
     padding-top: 15px;
     animation-delay: 13s;
   }
@@ -123,19 +127,21 @@ h2 {
   }
 }
 
-.backgroundstretch {
-  height: 100%;
+/* Background Image */
+.background {
   background-image: url("../img/backgroundImage.jpg");
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
-.background {
+
+/* Background Image Height while there are multi books in Lsit*/
+.heightStretch {
+  height: 100%;
+}
+
+/* Background Image default Height*/
+.heightVH {
   height: 100vh;
-  background-image: url("../img/backgroundImage.jpg");
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
 }

@@ -45,11 +45,13 @@ function Author() {
   //#endregion
   return (
     <>
-      <div className="background">
+      <div className="background heightVH">
         <div className="marqueePadding container">
           <div className="marquee">
             <p>Where do you want to go today? Find it in a book</p>
-            <p id="second">A book is a gift you can open again and again</p>
+            <p id="secondMarquee">
+              A book is a gift you can open again and again
+            </p>
           </div>
           <form
             className="form-inline"

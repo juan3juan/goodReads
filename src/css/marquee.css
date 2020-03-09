@@ -22,7 +22,7 @@
   -webkit-animation: scroll-left 2s linear infinite;
   animation: scroll-left 20s linear infinite;
 }
-#second {
+#secondMarquee {
   padding-top: 22px;
   animation-delay: 8s;
 }
