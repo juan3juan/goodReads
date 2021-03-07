@@ -4,7 +4,6 @@ import BookItem from "./bookitem";
 import Pagination from "./common/Pagination";
 import { Link } from "react-router-dom";
 import "../css/style.css";
-import MetaTags from "react-meta-tags";
 
 //page counter for Books API call
 let initialpage = 0;
@@ -98,9 +97,6 @@ const Books = props => {
   let con = "width=device-width, initial-scale=" + scale;
   return (
     <>
-      <MetaTags>
-        <meta name="viewport" content={con} />
-      </MetaTags>
       <div className={"view background" + backgroundsize}>
         <div className="container">
           <div className="col-12">

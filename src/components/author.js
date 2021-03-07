@@ -10,8 +10,10 @@ function Author() {
   const [author, setAuthor] = useState();
   //Used for Auhtors replied by the service
   const [authors, setAuthors] = useState([]);
+  //Used to display warning message
+  const [warning, setWarning] = useState();
   useEffect(() => {
-    //Add an event lister for Enter and Return Key
+    //Add an event listener for Enter and Return Key
     const listener = event => {
       if (event.code === "Enter" || event.code === "NumpadEnter") {
         handleClick();
@@ -28,11 +30,24 @@ function Author() {
   //Hanlder for input change
   const handleChange = e => {
     e.preventDefault();
-    setAuthor(e.target.value);
+    let regex = new RegExp("^$|^[a-zA-Z0-9]");
+    if(regex.test(e.target.value)) {
+      console.log(e.target.value);
+      setAuthor(e.target.value);
+      setWarning("")
+    } else {
+      setWarning("Please input valid Author or Book name you want to search")
+    }
+    
   };
   //Handler for Search Button Click
   const handleClick = () => {
+    console.log("author");
+
+    console.log(author);
     if (author !== undefined) {
+      console.log("author inside");
+
       axios
         .get("searchAuthor/" + author, {
           headers: { "Content-Type": "application/json" }
@@ -64,6 +79,7 @@ function Author() {
               className="form-control mr-2"
               id="authorSearch"
               type="text"
+              pattern="\w"
               placeholder="Search author"
               name="author"
               value={author || ""}
@@ -78,6 +94,8 @@ function Author() {
               value="Search"
             />
           </form>
+          {warning==="" ? <div></div>: 
+          <div style={{color: "#cc3300"}}>{warning}</div>}
           {authors.length === 0 ? null : (
             <table className="table table-striped" style={{ marginTop: 20 }}>
               <thead>
